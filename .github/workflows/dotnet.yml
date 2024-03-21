@@ -26,3 +26,9 @@ jobs:
       run: dotnet build --no-restore
     - name: Publish
       run: dotnet publish -c Release -r win-x64 --self-contained true /p:PublishSingleFile=true /p:IncludeNativeLibrariesForSelfExtract=true
+    - name: Upload WindowsStatsRepBldr.exe as an artifact
+      uses: actions/upload-artifact@v4.3.1
+      with:
+        name: WindowsStatsRepBldr-exe # This is the name of the artifact as it will appear in GitHub
+        path: |
+          /home/runner/work/WindowsStatsRepBldr/WindowsStatsRepBldr/bin/Release/net8.0/win-x64/publish/WindowsStatsRepBldr.exe
